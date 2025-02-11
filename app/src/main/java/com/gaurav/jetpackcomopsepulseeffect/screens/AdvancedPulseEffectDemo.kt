@@ -3,6 +3,7 @@ package com.gaurav.jetpackcomopsepulseeffect.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -23,8 +24,10 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.gaurav.jetpackcomopsepulseeffect.component.doublePulseEffect
+import androidx.compose.ui.unit.sp
+import com.gaurav.jetpackcomopsepulseeffect.component.doubleApplyPulseEffect
 
 @Composable
 fun AdvancedPulseEffectDemo() {
@@ -32,7 +35,7 @@ fun AdvancedPulseEffectDemo() {
         modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceAround
+        verticalArrangement = Arrangement.SpaceEvenly
 
     ) {
         Text(
@@ -49,46 +52,83 @@ fun AdvancedPulseEffectDemo() {
             color = Color.White // Text color set to transparent to enable gradient
         )
 
-        FilledIconButton(
-            onClick = {},
+        Column(
             modifier = Modifier
-                .doublePulseEffect(targetScale = 2f)
-                .size(42.dp)
+                .padding(1.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(imageVector = Icons.Rounded.Mic, contentDescription = null)
+            Text(
+                text = "Default Pulse Effect",
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            FilledIconButton(
+                onClick = {},
+                modifier = Modifier
+                    .doubleApplyPulseEffect(targetScale = 2f)
+                    .size(42.dp)
+            ) {
+                Icon(imageVector = Icons.Rounded.Mic, contentDescription = null)
+            }
         }
-
-        FilledIconButton(
-            onClick = {},
+        Column(
             modifier = Modifier
-                .doublePulseEffect(
-                    targetScale = 2f,
-                    brush = Brush.radialGradient(
-                        0.6f to Color.Yellow,
-                        0.9f to Color.Magenta,
-                        1.0f to Color.Red
+                .padding(1.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Double Pulse Effect",
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            FilledIconButton(
+                onClick = {},
+                modifier = Modifier
+                    .doubleApplyPulseEffect(
+                        targetScale = 2f,
+                        brush = Brush.radialGradient(
+                            0.6f to Color.Yellow,
+                            0.9f to Color.Magenta,
+                            1.0f to Color.Red
+                        )
                     )
-                )
-                .size(42.dp)
-        ) {
-            Icon(imageVector = Icons.Rounded.Mic, contentDescription = null)
+                    .size(42.dp)
+            ) {
+                Icon(imageVector = Icons.Rounded.Mic, contentDescription = null)
+            }
         }
-
-        Button(
-            onClick = { /*TODO*/ },
-            shape = RoundedCornerShape(16.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Magenta,
-                contentColor = Color.White
-            ),
+        Column(
             modifier = Modifier
-                .doublePulseEffect(
-                    brush = SolidColor(Color.Magenta),
-                    shape = RoundedCornerShape(16.dp)
-                )
-                .height(42.dp)
+                .padding(1.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("CLICK ME")
+            Text(
+                text = "Pulse Effect in Button",
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Gray
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                onClick = { /*TODO*/ },
+                shape = RoundedCornerShape(16.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Magenta,
+                    contentColor = Color.White
+                ),
+                modifier = Modifier
+                    .doubleApplyPulseEffect(
+                        brush = SolidColor(Color.Magenta),
+                        shape = RoundedCornerShape(16.dp)
+                    )
+                    .height(42.dp)
+            ) {
+                Text("CLICK ME")
+            }
         }
     }
 }

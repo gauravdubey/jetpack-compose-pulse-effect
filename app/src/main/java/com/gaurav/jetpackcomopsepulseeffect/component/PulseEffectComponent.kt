@@ -21,7 +21,7 @@ import androidx.compose.ui.graphics.drawscope.scale
 
 
 @Composable
-fun Modifier.doublePulseEffect(
+fun Modifier.doubleApplyPulseEffect(
     targetScale: Float = 1.5f,
     initialScale: Float = 1.0f,
     brush: Brush = SolidColor(Color.Black.copy(0.32f)),
@@ -30,14 +30,14 @@ fun Modifier.doublePulseEffect(
 
 ): Modifier {
     return this
-        .pulseEffect(
+        .applyPulseEffect(
             targetScale = targetScale,
             initialScale = initialScale,
             brush = brush,
             shape = shape,
             animationSpec = tween(durationMillis = durationMillis, easing = FastOutSlowInEasing)
         )
-        .pulseEffect(
+        .applyPulseEffect(
             targetScale = targetScale,
             initialScale = initialScale,
             brush = brush,
@@ -51,7 +51,7 @@ fun Modifier.doublePulseEffect(
 }
 
 @Composable
-fun Modifier.pulseEffect(
+fun Modifier.applyPulseEffect(
     targetScale: Float = 1.5f,
     initialScale: Float = 1.0f,
     brush: Brush = SolidColor(Color.Black.copy(0.32f)),
